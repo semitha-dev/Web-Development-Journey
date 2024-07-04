@@ -39,7 +39,15 @@ const App = () => {
   
   
   // Add the deleteToDo code here
+  const deleteToDo = (id : number)=>{
 
+    let updatetodos =[...todos].filter((todo) =>  todo.id !== id);
+
+    setTodos(updatetodos);
+
+
+
+  }
   
   // Add the toggleComplete code here
 
@@ -61,11 +69,12 @@ placeholder="Enter You Task"
 />
 <button type ="submit">Add Todo</button>
 </form>
-<ul>
+<ul className="list">
   {todos.map((name , index) =>(
-    <li key={index}>
-      {name.text}
-      <p>Compelted: {name.completed ? 'yes' : 'no' }</p>
+    <li key={index} className="todosListShow">
+      <h2>{name.text}<input type="checkbox" /></h2>
+    
+      <button onClick={() => deleteToDo(name.id)}>Delete</button>
     </li>
   ))}
 
